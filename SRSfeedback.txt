@@ -1,0 +1,159 @@
+
+Documentation Feedback ~ Deliverable #2
+Software Requirements Specification
+Initial Development Schedule
+CMSI 4071 Fall 2026
+=======================================
+
+COMPONENT BREAKDOWN:
+   Assessment: GOOD
+      The document identifies three principal CSCs:
+         * MD-GooPI (database and service layer)
+         * MD-Queuey (workstation daemon)
+         * MD-Gooey Extension (frontend additions)
+      The decomposition reflects the system's major architectural layers:
+      user interface, service/database layer, and simulation execution
+      environment. Several useful CSUs are also identified within each CSC.
+   Completeness Analysis
+      The major responsibilities required for simulation management are
+      represented, including authentication, persistence, execution,
+      monitoring, and visualization. The architecture is straightforward and
+      easy to understand.
+   Areas Missing or Underdeveloped
+      * The protein visualization functionality is represented by only a
+         single CSU despite being a potentially significant subsystem.
+      * Authentication is represented only as a frontend page rather than a
+         dedicated service component.
+      * No explicit notification or email subsystem is identified despite
+         performance requirements requiring email notifications.
+      * Interfaces between CSCs are implied but not formally defined.
+   Suggestions for Improvement
+      * Add dedicated CSCs or CSUs for authentication, notifications, and
+         protein visualization services so responsibilities are more clearly
+         separated.
+      * Add interface specifications describing the API contracts, data
+         formats, and communication responsibilities between MD-Gooey,
+         MD-GooPI, and MD-Queuey.
+
+FUNCTIONAL REQUIREMENTS:
+   Assessment: GOOD
+      The functional requirements cover the core operations needed for the
+      system:
+         * User authentication
+         * Simulation creation and storage
+         * Simulation retrieval and editing
+         * Queue management
+         * Script generation and execution
+         * Status tracking
+         * Result storage
+         * Protein visualization
+   Completeness Analysis
+      The requirements adequately describe the minimum viable functionality
+      for managing simulations from creation through execution and result
+      retrieval. The requirements are generally written using "shall"
+      language and are relatively easy to verify.
+   Areas Missing or Underdeveloped
+      * Security requirements are largely absent.
+      * Authorization requirements beyond authentication are unspecified.
+      * Password recovery and account management requirements are absent.
+      * Error-handling behavior is only briefly addressed.
+      * Administrative responsibilities are not described.
+      * Data retention and backup behavior are not specified.
+   Additional Observations
+     * Requirement numbering contains a duplicate 5.3.1.7.
+     * Several requirements contain multiple behaviors in a single
+        requirement and could be made more atomic.
+     * The stated Agile approach references user stories, but most of the
+        listed requirements are actually traditional "shall" statements.
+   Suggestions for Improvement
+   ---------------------------
+      * Add requirements governing authorization, password management,
+         account recovery, audit logging, and protection of simulation data.
+      * Add functional requirements describing failure recovery, backup
+         behavior, notification handling, and administrator capabilities.
+
+PERFORMANCE REQUIREMENTS:
+   Assessment: VERY GOOD
+      The performance requirements are one of the strongest sections of the
+      document. The requirements include measurable expectations for:
+         * Database response times
+         * Queueing latency
+         * Notification delivery
+         * Multi-GPU execution
+         * Recovery after reboot
+         * Resource utilization
+         * Storage monitoring
+         * Visualization responsiveness
+         * Availability
+   Completeness Analysis
+      The section shows considerable thought regarding the practical
+      operation of the system. Queue recovery, GPU utilization, storage
+      monitoring, and workstation constraints are addressed, which are often
+      overlooked in student projects.
+   Areas Missing or Underdeveloped
+      * Several requirements are not objectively measurable.
+      * Terms such as "small share," "few seconds," and "without visible
+         lag" lack precise acceptance criteria.
+      * Reliability and uptime targets are not quantified.
+      * Database scalability limits are not specified.
+      * Concurrent-user requirements are absent.
+   Suggestions for Improvement
+      * Replace subjective language with measurable values such as CPU
+         percentage, memory limits, frame rates, response times, and
+         availability percentages.
+      * Add requirements defining maximum user loads, database capacity,
+         restoration times, and acceptable service uptime targets.
+
+ENVIRONMENT REQUIREMENTS:
+   Assessment: FAIR TO GOOD
+      The document separates development and execution environments, which
+      aligns with the recommended requirements structure. The development
+      requirements identify tools and resources, while the execution
+      requirements identify workstation dependencies and external services.
+   Completeness Analysis
+      The requirements establish the minimum environment needed to build and
+      operate the system. Key dependencies such as GROMACS, GitHub, Neon,
+      Vercel, workstation permissions, tokens, and storage requirements are
+      identified.
+   Areas Missing or Underdeveloped
+      * Operating system requirements are absent.
+      * Hardware specifications are not defined.
+      * Browser requirements are not defined.
+      * Software version requirements are not specified.
+      * Testing environment requirements are not included.
+      * Backup and disaster-recovery environments are not discussed.
+   Suggestions for Improvement
+      * Specify supported operating systems, browser versions, workstation
+         hardware specifications, and required software versions for GROMACS,
+         Node.js, Python, and database components.
+      * Add testing, staging, backup, monitoring, and disaster-recovery
+         environment requirements to improve deployment readiness.
+
+OVERALL ASSESSMENT:
+   Category                          Points
+   Component Breakdown                 1/1
+   Functional Requirements             4/4
+   Performance Requirements            2/2
+   Environment Requirements            1/1
+                                     =====
+   Subtotal                            8/8
+   Preliminary Schedule                1/2
+   ------------------------------------------------------
+   Total Percentage:   9/10 = 90% which is an A-minus
+
+OVERALL ASSESSMENT:
+   This document is a solid Agile requirements specification with a
+   reasonable architectural breakdown and good operational thinking around
+   simulation execution. The strongest aspect is the performance section,
+   which demonstrates awareness of practical issues such as queue
+   recovery, GPU allocation, storage management, and workstation
+   operations.
+
+   Your schedule needs quite a bit of work, even for a preliminary straw
+   man attempt.  See if you can break those deliverables up more, assuming
+   that the "v" numbers are sprints.  Try to look at the details of what
+   you want to produce in each sprint.  The 'straw man' idea is supposed
+   to reflect all the tasks that you have broken out in your SRS, and
+   the 'straw' comes from the fact that you may not know how long each of
+   them will take, but it's your best guess at the time as to durations.
+   You can use story points for estimation, or estimated hours or days.
