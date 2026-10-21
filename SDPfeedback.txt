@@ -1,0 +1,108 @@
+
+Documentation Feedback ~ Deliverable #3
+Software Development Plan [SDP]
+CMSI 4071 Fall 2026
+=======================================
+
+INTRODUCTION/DELIVERABLES SECTION:
+   Assessment: Very Good
+      Strengths
+         • Deliverables are organized into clearly defined iterations.
+         • Each iteration has a target completion date.
+         • Deliverables build progressively from infrastructure and
+           database development through integration and deployment.
+         • Final documentation and demonstration activities are
+           included.
+         • Deliverables are aligned with project objectives.
+      Areas for Improvement
+         • Deliverables focus primarily on software functionality and
+           provide limited coverage of engineering artifacts.
+         • Acceptance criteria are not specified for the iterations.
+      Suggestions
+         1. Include additional project deliverables such as test
+            reports, design documentation, deployment guides, user
+            documentation, and maintenance documentation.
+         2. Define measurable acceptance criteria for each iteration so
+            completion can be objectively verified.
+
+PROJECT RESOURCES SECTION:
+   Assessment: Excellent
+      Strengths
+         • Hardware and software resources are clearly separated.
+         • Hardware specifications for the LMU simulation workstation
+           are detailed and comprehensive.
+         • Software resources are organized logically by purpose.
+         • Important software versions are identified.
+         • Resources are tied directly to project activities and system
+           components.
+      Areas for Improvement
+         • Personnel resource allocation is not discussed.
+         • Resource contingency planning is not included.
+      Suggestions
+         1. Provide estimated effort allocations for major team
+            members and critical project activities.
+         2. Include contingency plans for workstation access, cloud
+            service availability, and deployment resources.
+
+PROJECT ORGANIZATION SECTION:
+   Assessment: Very Good
+      Strengths
+         • Responsibilities are assigned according to major system
+           components.
+         • Team ownership of frontend, backend, daemon, integration,
+           testing, and documentation activities is clearly defined.
+         • Shared responsibilities are appropriately identified.
+         • Team structure aligns well with the technical architecture.
+      Areas for Improvement
+         • No organizational chart is provided.
+         • Communication processes and decision-making procedures are
+           not discussed.
+      Suggestions
+         1. Add a simple organization chart illustrating project roles,
+            communication paths, and reporting relationships.
+         2. Define meeting schedules, conflict-resolution procedures,
+            and processes for handling scope or design changes.
+
+PROJECT SCHEDULE SECTION:
+   Assessment: Excellent
+      Strengths
+         • Includes a GANTT chart and task/resource table.
+         • Tasks include optimistic, likely, pessimistic, and expected
+           duration estimates.
+         • A critical-path calculation is provided.
+         • Tasks are linked to resources and assigned personnel.
+         • The schedule covers major development and integration
+           activities through deployment.
+      Areas for Improvement
+         • Dependencies between many tasks are implied rather than
+           explicitly documented.
+         • Project milestones are not clearly identified within the
+           schedule section.
+      Suggestions
+         1. Add explicit predecessor and dependency information for
+            major tasks.
+         2. Identify key milestones and define the completion criteria
+            for each milestone.
+
+OVERALL ASSESSMENT:
+   Category                          Points
+   Project Deliverables                0.8
+   Project Resources                   0.9
+   Project Organization                0.8
+   Project Schedule                    1.8
+                                     =====
+   Subtotal                            4.3
+   ------------------------------------------------------
+   Total Percentage:   4.3/5 = 86% which is a B
+
+   This SDP is a strong Agile plan that satisfies the major requirements of
+      the Software Development Plan outline.  The Resources section is
+      particularly well developed, providing detailed hardware and software
+      descriptions.  The Schedule section is also above average because it
+      includes duration estimates, a task/resource table, and critical-path
+      analysis.
+   The main opportunities for improvement are expanding the Deliverables
+      section beyond software functionality and adding more detail regarding
+      team communication, governance, and project management processes.
+
+Good work on this deliverable!
