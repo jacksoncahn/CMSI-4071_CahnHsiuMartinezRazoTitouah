@@ -1,0 +1,301 @@
+
+Documentation Feedback ~ Deliverable #4
+Software Design Document ~ Architecture
+CMSI 4071 Fall 2026
+=======================================
+
+INTRODUCTION SECTION:
+   System objectives section
+      Strengths
+         System objectives are clearly stated.
+         User value is emphasized.
+         Access to centralized execution resources is justified.
+         Scope is understandable.
+      Suggestions
+         Objectives should be more measurable.
+         Include objectives tied to queue throughput.
+         Include availability objectives.
+         Include objectives related to security and reliability.
+         Include objectives related to user notifications and monitoring.
+
+   Hardware, software, and human interfaces section
+      Strengths
+         All major interface classes are discussed.
+         User-facing interactions are explained clearly.
+         Database interfaces are documented.
+         Workstation interfaces are documented.
+         External software dependencies are identified.
+      Suggestions
+         Organize the section more consistently as interface categories.
+         Include external services omitted from the architecture.
+         Reduce implementation detail where not architecturally relevant.
+         Expand discussion of operational interfaces.
+      FRONTEND <-> USER
+         Strengths
+            Thorough description of user workflows.
+            User navigation flow is clear.
+            Authentication behavior is documented.
+            Major screens are identified.
+         Suggestions
+            Distinguish architectural responsibilities from UI design descriptions.
+            Describe ownership boundaries between frontend and backend.
+            Include discussion of protein visualizer responsibilities.
+      USER INTERACTION WITH THE WEB APP
+         Strengths
+            Comprehensive description of user operations.
+            Consistent with primary requirements.
+            Demonstrates understanding of user workflow.
+         Suggestions
+            Include simulation-status update behavior.
+            Include notification behavior.
+            Clarify interaction with protein-visualization features.
+      BROWSER ACCESS
+         Strengths
+            Defines user access mechanism.
+         Suggestions
+            Browser compatibility assumptions should be identified.
+            Accessibility considerations could be documented.
+            This subsection is somewhat minimal for architectural purposes.
+      DATABASE <-> FRONTEND
+         Strengths
+            Strong architectural discussion.
+            Authentication flow is explained well.
+            Role-based access control is described.
+            Security considerations are included.
+         Suggestions
+            Clarify separation between Data API and database responsibilities.
+            Include architectural treatment of API failures.
+            Include audit and logging responsibilities.
+      FETCHING, CREATING, UPDATING
+         Strengths
+            Clearly explains authenticated access.
+            Demonstrates sound access-control architecture.
+            Explains ownership restrictions effectively.
+         Suggestions
+            Describe transaction ownership.
+            Clarify concurrency considerations.
+            Document status-update consistency requirements.
+      WORKSTATION <-> DATABASE
+         Strengths
+            Strong separation of workstation concerns.
+            Appropriate architectural abstraction.
+            Good discussion of privileged access.
+         Suggestions
+            Include queue persistence.
+            Include restart recovery behavior.
+            Include GPU-resource management discussion.
+      PYTHON DAEMON
+         Strengths
+            One of the strongest subsections.
+            Responsibilities are clearly defined.
+            Good separation from frontend responsibilities.
+            Covers execution lifecycle well.
+         Suggestions
+            Discuss concurrency architecture.
+            Discuss queue recovery.
+            Discuss fault tolerance.
+            Discuss checkpoint management.
+      DIRECT WORKSTATION ACCESS
+         Strengths
+            Identifies administrative access path.
+            Documents operational constraints.
+         Suggestions
+            Clarify whether SSH access is within system scope.
+            Focus more on architectural implications than organizational details.
+      HARDWARE
+         Strengths
+            Identifies client hardware assumptions.
+         Suggestions
+            Workstation hardware should be discussed more thoroughly.
+            Multi-GPU architecture should be documented here.
+            Hardware requirements from the SRS should be referenced.
+      PERSONAL COMPUTER
+         Strengths
+            Appropriate identification of client requirements.
+         Suggestions
+            Include expected browser-performance assumptions.
+            Include network assumptions.
+      LIBRARIES, VERSIONS, AND PROTOCOLS
+         Strengths
+            Thorough inventory of technologies.
+            Important architectural dependencies are identified.
+         Suggestions
+            This section moves toward implementation detail.
+            Emphasize architectural significance rather than version information.
+      IMPORTANT LIBRARIES
+         Strengths
+            Dependencies are justified.
+            Responsibility allocation is clear.
+         Suggestions
+            Focus on architectural roles instead of exact versions.
+            Distinguish required dependencies from implementation choices.
+      LANGUAGES
+         Strengths
+            Technology allocation is clear.
+         Suggestions
+      EXTERNAL SOFTWARES
+         Strengths
+            Correctly identifies GROMACS as a critical dependency.
+         Suggestions
+            Include protein-data sources supporting visualization.
+            Include email infrastructure if required by notifications.
+      PROTOCOLS
+         Strengths
+            Security and communication mechanisms are identified.
+            HTTPS and SSH are appropriate architectural protocols.
+         Suggestions
+            Clarify trust boundaries.
+            Clarify daemon-authentication mechanisms.
+
+ARCHITECTURAL DESIGN SECTION:
+   Major software components section
+      Strengths
+         Components align directly with CSC structure.
+         Responsibilities are easy to understand.
+         Requirement traceability is strong.
+         Component boundaries are clear.
+      Suggestions
+         Add interface ownership information.
+         Include major inputs and outputs for each component.
+      MD-GOOEY FRONTEND LAYER
+         Strengths
+            Strong mapping to user-facing requirements.
+            Responsibilities are well bounded.
+            Authentication integration is clear.
+         Suggestions
+            Protein visualizer should appear here.
+            Results-visualization architecture should be discussed.
+            Notification display responsibilities should be documented.
+      MD-GOOPI DATABASE LAYER
+         Strengths
+            Strong ownership of persistent data.
+            Security responsibilities are implied.
+            Appropriate intermediary role.
+         Suggestions
+            Explicitly discuss results storage.
+            Discuss backup and recovery assumptions.
+            Clarify API ownership versus database ownership.
+      MD-QUEUEY WORKSTATION LAYER
+         Strengths
+            Very strong component description.
+            Good security-oriented script reconstruction approach.
+            Responsibilities align well with requirements.
+         Suggestions
+            Multi-GPU scheduling should be documented.
+            Restart recovery should be documented.
+            Storage monitoring should be documented.
+
+   Major software interactions section
+      Strengths
+         Interactions are clearly presented.
+         System communication flows are understandable.
+         Layer boundaries remain distinct.
+      Suggestions
+         Include operational-error scenarios.
+         Include notification interactions.
+         Include simulation-failure handling paths.
+      MD-GOOEY AND MD-GOOPI
+         Strengths
+            Authentication-aware communication is described.
+            Data ownership is maintained.
+         Suggestions
+            Clarify update consistency guarantees.
+            Discuss handling of stale client data.
+      MD-GOOPI AND MD-QUEUEY
+         Strengths
+            Clear polling and update relationship.
+            Responsibilities are appropriately separated.
+         Suggestions
+            Discuss queue persistence and restart recovery.
+            Describe scaling implications.
+      MD-QUEUEY AND GROMACS
+         Strengths
+            Execution flow is easy to understand.
+            Status lifecycle is clearly documented.
+            Good abstraction boundary.
+         Suggestions
+            Include failure-recovery paths.
+            Include checkpoint and resume architecture.
+            Include GPU allocation strategy.
+
+   Architectural design diagrams section
+      Strengths
+         Appropriate architectural viewpoints are included.
+         Diagrams reinforce textual descriptions.
+         Diagram set matches architectural concerns.
+      Suggestions
+         Add direct references to requirements.
+         Add brief architectural interpretation of each diagram.
+      SYSTEM ARCHITECTURE DIAGRAM
+         Strengths
+            One of the strongest diagrams.
+            Clearly illustrates subsystem boundaries.
+            Shows information flow effectively.
+         Suggestions
+            Include notification services if required.
+            Include protein-visualization support components.
+      USE CASE DIAGRAM
+         Strengths
+            Captures primary user interactions.
+            Consistent with most functional requirements.
+         Suggestions
+            Add protein visualization use cases.
+            Add administrator and notification behaviors if applicable.
+      TOP-LEVEL CLASS DIAGRAM
+         Strengths
+            Appropriate architectural abstraction.
+            Supports decomposition of major subsystems.
+            Shows cross-layer relationships.
+         Suggestions
+            Clearly indicate subsystem ownership boundaries.
+            Avoid drifting into detailed-design concerns.
+      SIMULATION EXECUTION SEQUENCE DIAGRAM
+         Strengths
+            Excellent depiction of end-to-end workflow.
+            Strong support for architectural interactions.
+            Includes normal and failure execution paths.
+         Suggestions
+            Include recovery and restart behavior.
+            Include email-notification interactions if required.
+
+OVERALL ASSESSMENT:
+   Category                            Points
+   -----------------------------       ------
+   INTRODUCTION:
+      System objectives                1 of 1
+      H/W, S/W, Human I/F              2 of 2
+
+   ARCHITECTURAL DESIGN SECTION:
+      Major software components        2 of 2
+      Major software interactions      2 of 2
+      Architectural design diagrams    3 of 3
+                                       ======
+                                           10
+   ------------------------------------------------------
+   Total Percentage:  10/10 = 100% which is an A-plus
+
+COMMENTS:
+The architectural SDD is generally strong and demonstrates a clear
+three-layer architecture with well-defined responsibilities for the web
+application, service/data layer, and workstation execution layer.
+
+The architecture is largely consistent with the requirements and provides
+good coverage of the major CSCs identified in the SRS.  The strongest
+aspects are the clear subsystem decomposition, the architecture diagrams,
+the identification of interfaces, and the mapping of requirements to
+architectural components.
+
+The design provides a coherent architecture with good subsystem
+decomposition, useful diagrams, and strong alignment with the core
+functional requirements.  The architecture demonstrates clear thinking
+about data ownership, execution separation, security, and layered design.
+
+The strongest sections are the workstation layer, the database interaction
+architecture, the simulation lifecycle description, and the architectural
+diagrams.  The primary improvement opportunities are expanding support for
+protein visualization, operational and performance requirements, multi-GPU
+execution architecture, notification architecture, and fault-tolerance
+considerations.
+
+Overall Rating: Strong Architectural SDD
+
